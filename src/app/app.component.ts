@@ -75,22 +75,22 @@ export class AppComponent implements OnInit {
 
 
 
-  ngOnInit(): void {
+  // ngOnInit(): void {
 
-  }
-
-  // sensorData : Object= [];
-  // destroy$ : Subject<boolean> = new Subject<boolean>();
-
-
-  // constructor(private appService: AppService) { }
-
-  // ngOnInit() {
-
-  //   this.appService.getSensorData().pipe(takeUntil(this.destroy$)).subscribe((value:Object) => {
-  //     this.sensorData = value;
-  //   });
   // }
+
+  sensorData : Object= [];
+  destroy$ : Subject<boolean> = new Subject<boolean>();
+
+
+  constructor(private appService: AppService) { }
+
+  ngOnInit() {
+
+    this.appService.getSensorData().pipe(takeUntil(this.destroy$)).subscribe((value:Object) => {
+      this.sensorData = value;
+    });
+  }
 
   title = 'sensor-readig-app';
 }
